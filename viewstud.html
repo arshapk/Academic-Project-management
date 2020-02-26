@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student List</title>
+</head>
+<body>
+<form>
+	<table border="1"align="center"  width="400">
+<tr>
+
+			<td>     Name  </td>
+			<td>Semester</td>
+			<td>Branch</td>
+			<td>Email</td>
+			<td>Year</td>
+			<td>Batch</td>
+		</tr>
+        </tr>
+        {% if objval %}
+        {% for ob in objval %}
+        <tr>
+            <td>{{ ob.st_name}}</td>
+            <td>{{ ob.st_semester}}</td>
+            <td>{{ ob.st_branch}}</td>
+            <td>{{ ob.st_email }}</td>
+            <td>{{ ob.st_year }}</td>
+            <td>{{ ob.st_batch }}</td>
+
+        </tr>
+        {% endfor %}
+        {% endif %}
+
+
+			</table>
+</form>
+</body>
+</html>
