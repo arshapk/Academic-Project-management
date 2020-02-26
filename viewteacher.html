@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teacher List</title>
+</head>
+<body>
+<form>
+	<table border="2"align="center"  width="400">
+   <tr><td> <input type=button onClick="parent.location='registerteacher.html'" value='Registration'>
+        </td></tr>
+			
+            <tr>
+			<td>     Name  </td>
+			<td>Address</td>
+			<td>Experience</td>
+			<td>Qualification</td>
+			<td>  Email  </td>
+			<td>Contact</td>
+</tr>
+
+        {% if objval %}
+        {% for ob in objval %}
+        <tr>
+            <td>{{ ob.t_name}}</td>
+            <td>{{ ob.address }}</td>
+            <td>{{ ob.experience }}</td>
+            <td>{{ ob.qualification }}</td>
+            <td>{{ ob.t_email }}</td>
+            <td>{{ ob.t_contact}}</td>
+
+
+
+
+        </tr>
+        {% endfor %}
+        {% endif %}
+
+
+		</tr>
+			</table>
+				
+		
+	
+</form>
+</body>
+</html>
