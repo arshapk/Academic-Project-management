@@ -1,0 +1,59 @@
+{% extends 'temp/projectcoordinator.html' %}
+{% block admin  %}
+        <style>
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+<body bgcolor="#CECEF6">
+	<form >
+    <font color="black">
+    <br><br>
+    <br>
+    <br>
+		<h1 align="center">Assigned Roles</h1>
+		<table border="0" align="center">
+			<tr>
+				<td>Head of Department</td>
+				<td>Project coordinator</td>
+				<td>Internal Guide</td>
+				<td>Batch</td>
+				<td>Date</td>
+			</tr>
+              {% if objval %}
+        {% for ob in objval %}
+        <tr>
+            <td>{{ ob.hod}}</td>
+            <td>{{ ob.project_coordinator}}</td>
+            <td>{{ ob.internal_guide}}</td>
+            <td>{{ ob.batch}}</td>
+            <td>{{ ob.date}}</td>
+
+
+
+
+        </tr>
+        {% endfor %}
+        {% endif %}
+
+
+		</table>
+    </font>
+	</form>
+{% endblock %}
+
