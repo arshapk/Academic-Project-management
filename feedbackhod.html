@@ -1,0 +1,58 @@
+{% extends 'temp/hod.html' %}
+{% block admin  %}
+<style>
+table {
+
+  border-collapse: collapse;
+  width: 50px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+<body bgcolor="#CECEF6">
+<form><br>
+    <br><br>
+    <br>
+    <h2 align="center">Feedback</h2>
+    <table class="table-bordered" align="center"  width="100">
+     <col width="130">
+
+<tr>
+    <td>Name</td>
+    <td width="200" >Date</td>
+    <td>Feedback</td>
+{#    <td >Rating</td>#}
+
+</tr>
+        {% if objval %}
+        {% for ob in objval %}
+        <tr>
+
+            <td>{{ ob.1}}</td>
+            <td>{{ ob.10}}</td>
+
+            <td>{{ ob.11}}</td>
+
+{#            <td>{{ ob.12 }}</td>#}
+
+        </tr>
+        {% endfor %}
+        {% endif %}
+
+
+    </table>
+</form>
+{% endblock %}
