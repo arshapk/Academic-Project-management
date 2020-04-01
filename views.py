@@ -1,38 +1,37 @@
 from django.shortcuts import render
-from role.models import Role
-from login.models import Login
-
+from feedback.models import Feedback
+from django.db import connection
+import datetime
 # Create your views here.
-def roles(request):
-
-
+def addfeedback(request):
+    objlist = Feedback.objects.filter(sender_id=request.session["student"])
     if request.method == "POST":
-        obj = Role()
-        obv = Login()
-        obv.type=request.POST.get("type")
-
-
-
-
-
-        obj.t_id=1
-        obj.r_id=2
-        obv.uid=6
-        obj.project_coordinator = request.POST.get("coo")
-        obj.hod = request.POST.get("hod")
-        obj.internal_guide = request.POST.get("Internal")
-        obj.batch= request.POST.get("year")
-        obj.date= request.POST.get("date")
+        obj = Feedback()
+        obj.sender_id = request.session["student"]
+        obj.feedback = request.POST.get("feedback")
+        obj.f_date = datetime.date.today()
         obj.save()
-        obv.save()
-    return render(request,'role/role.html')
-def viewrole(request):
+    return render(request,'feedback/addfeedbackstud.html')
 
-    objlist = Role.objects.all()
+def viewstud(request):
+    objlist = Feedback.objects.filter(sender_id=request.session["student"])
+    # objlist = Feedback.objects.get(idd)
     context = {
         'objval': objlist,
     }
 
-    return render(request,'role/viewrole.html',context)
+    return render(request,'feedback/feedbackstud.html',context)
 
 
+def viewhod(request):
+    objlist = connection.cursor()
+    objlist.execute("SELECT * FROM student a ,feedback b WHERE a.st_id=b.sender_id")
+
+    context = {
+        'objval': objlist.fetchall(),
+
+    # objlist = Feedback.objects.all()
+    # context = {
+    #     'objval': objlist,
+    }
+    return render(request,'feedback/feedbackhod.html',context)
